@@ -1,54 +1,54 @@
-PixelHunter - Jogo de Precis„o para BitDogLab
+PixelHunter - Jogo de Precis√£o para BitDogLab
 
-DescriÁ„o
-O PixelHunter È um jogo eletrÙnico interativo desenvolvido para a placa BitDogLab com microcontrolador RP2040, que testa a coordenaÁ„o motora e tempo de reaÁ„o do jogador. O objetivo È posicionar um cursor dentro de ·reas especÌficas (quadrados) exibidas no display OLED, utilizando um joystick analÛgico. O sistema inclui exibiÁ„o gr·fica no display OLED, feedback visual com LEDs RGB, alertas sonoros com buzzer e contagem regressiva em matriz de LEDs.
+Descri√ß√£o
+O PixelHunter √© um jogo eletr√¥nico interativo desenvolvido para a placa BitDogLab com microcontrolador RP2040, que testa a coordena√ß√£o motora e tempo de rea√ß√£o do jogador. O objetivo √© posicionar um cursor dentro de √°reas espec√≠ficas (quadrados) exibidas no display OLED, utilizando um joystick anal√≥gico. O sistema inclui exibi√ß√£o gr√°fica no display OLED, feedback visual com LEDs RGB, alertas sonoros com buzzer e contagem regressiva em matriz de LEDs.
 
-O jogo È capaz de oferecer desafios progressivos, com fases que aumentam em dificuldade, e fornecer feedback imediato sobre o desempenho do jogador.
+O jogo √© capaz de oferecer desafios progressivos, com fases que aumentam em dificuldade, e fornecer feedback imediato sobre o desempenho do jogador.
 
 Objetivos
 Criar um jogo interativo com controles intuitivos via joystick
 Implementar sistema de fases progressivas com aumento de dificuldade
-Fornecer feedback visual atravÈs do display OLED e LEDs RGB
+Fornecer feedback visual atrav√©s do display OLED e LEDs RGB
 Implementar alertas sonoros para acertos e erros
 Desenvolver um sistema de contagem regressiva usando matriz de LEDs
-Utilizar interrupÁıes para tratamento eficiente dos botıes
+Utilizar interrup√ß√µes para tratamento eficiente dos bot√µes
 
 Componentes Utilizados
-Componente - Conex„o BitDogLab - FunÁ„o no Projeto
+Componente - Conex√£o BitDogLab - Fun√ß√£o no Projeto
 
 BitDogLab ? Microcontrolador RP2040 ? Placa base
 
-Display OLED ? Exibe interface do jogo e gr·ficos ? Conectado via I2C (GP14 - SDA, GP15 - SCL)
+Display OLED ? Exibe interface do jogo e gr√°ficos ? Conectado via I2C (GP14 - SDA, GP15 - SCL)
 
-Joystick ? Controla o cursor do jogador ? Entradas analÛgicas GP26 (X) e GP27 (Y)
+Joystick ? Controla o cursor do jogador ? Entradas anal√≥gicas GP26 (X) e GP27 (Y)
 
-Bot„o do Joystick ? Inicia o jogo / fases ? GP22
+Bot√£o do Joystick ? Inicia o jogo / fases ? GP22
 
-Bot„o A ? Confirma a posiÁ„o do cursor ? GP5
+Bot√£o A ? Confirma a posi√ß√£o do cursor ? GP5
 
-Bot„o B ? Reinicia o jogo ? GP6
+Bot√£o B ? Reinicia o jogo ? GP6
 
-LED RGB ? Indica status (verde: vitÛria, vermelho: derrota) ? GP11 (verde), GP12 (azul), GP13 (vermelho)
+LED RGB ? Indica status (verde: vit√≥ria, vermelho: derrota) ? GP11 (verde), GP12 (azul), GP13 (vermelho)
 
 Matriz de LEDs ? Exibe contagem regressiva do tempo ? Conectada ao GP7 via PIO
 
-Buzzer ? Reproduz sons de vitÛria ou derrota ? GP21
+Buzzer ? Reproduz sons de vit√≥ria ou derrota ? GP21
 
 Funcionamento
 1. Menu Inicial
-ExibiÁ„o no display OLED:
+Exibi√ß√£o no display OLED:
 
 PIXELHUNTER
-Pressione BOT√O JOYSTICK
+Pressione BOT√ÉO JOYSTICK
 Fase: 1
-O bot„o do joystick inicia o jogo
+O bot√£o do joystick inicia o jogo
 
 2. Fases de Jogo
-Cada fase apresenta um quadrado em posiÁ„o aleatÛria
+Cada fase apresenta um quadrado em posi√ß√£o aleat√≥ria
 
 O jogador controla um cursor (8x8 pixels) usando o joystick
 
-Para avanÁar, deve posicionar o cursor dentro do quadrado e pressionar o bot„o A
+Para avan√ßar, deve posicionar o cursor dentro do quadrado e pressionar o bot√£o A
 
 Dificuldade progressiva:
 
@@ -61,9 +61,9 @@ Acerto:
 
 LED verde acende
 
-Buzzer emite som de vitÛria
+Buzzer emite som de vit√≥ria
 
-AvanÁa para prÛxima fase
+Avan√ßa para pr√≥xima fase
 
 Erro/Tempo esgotado:
 
@@ -76,85 +76,85 @@ Reinicia a fase atual
 4. Contagem Regressiva
 Matriz de LEDs exibe contagem de 5 a 0
 
-Cada n˙mero permanece por 1 segundo
+Cada n√∫mero permanece por 1 segundo
 
 Tempo esgotado resulta em derrota
 
-5. VitÛria Final
+5. Vit√≥ria Final
 Ao completar todas as fases:
 
 Buzzer toca melodia comemorativa
 
-Display mostra mensagem de parabÈns
+Display mostra mensagem de parab√©ns
 
 6. Controles
 Joystick: Move o cursor na tela
 
-Bot„o A: Confirma posiÁ„o do cursor
+Bot√£o A: Confirma posi√ß√£o do cursor
 
-Bot„o B: Reinicia o jogo a qualquer momento
+Bot√£o B: Reinicia o jogo a qualquer momento
 
-Bot„o Joystick: Inicia jogo no menu
+Bot√£o Joystick: Inicia jogo no menu
 
-Estrutura do CÛdigo
-InicializaÁ„o:
+Estrutura do C√≥digo
+Inicializa√ß√£o:
 
-ConfiguraÁ„o de GPIOs, ADC, I2C e PIO
+Configura√ß√£o de GPIOs, ADC, I2C e PIO
 
-InicializaÁ„o do display OLED
+Inicializa√ß√£o do display OLED
 
-Carregamento dos padrıes para matriz de LEDs
+Carregamento dos padr√µes para matriz de LEDs
 
 Leitura de Entradas:
 
 Joystick (eixos X e Y)
 
-Botıes (com debounce de 50ms)
+Bot√µes (com debounce de 50ms)
 
-LÛgica do Jogo:
+L√≥gica do Jogo:
 
 Controle do cursor
 
-VerificaÁ„o de colis„o (cursor dentro do quadrado)
+Verifica√ß√£o de colis√£o (cursor dentro do quadrado)
 
 Gerenciamento de fases
 
 Contagem regressiva
 
-SaÌdas:
+Sa√≠das:
 
-AtualizaÁ„o do display OLED
+Atualiza√ß√£o do display OLED
 
 Controle dos LEDs RGB
 
-AtivaÁ„o do buzzer
+Ativa√ß√£o do buzzer
 
-AtualizaÁ„o da matriz de LEDs
+Atualiza√ß√£o da matriz de LEDs
 
-Rotinas de InterrupÁ„o:
+Rotinas de Interrup√ß√£o:
 
-Tratamento dos botıes
+Tratamento dos bot√µes
 
-TemporizaÁ„o precisa
+Temporiza√ß√£o precisa
 
 Como Executar o Projeto
-Conectar os componentes conforme a tabela de conexıes
+Conectar os componentes conforme a tabela de conex√µes
 
-Compilar e carregar o cÛdigo no microcontrolador RP2040
+Compilar e carregar o c√≥digo no microcontrolador RP2040
 
-OperaÁ„o:
+Opera√ß√£o:
 
 Movimentar o joystick para controlar o cursor
 
-Pressionar bot„o A para confirmar posiÁ„o
+Pressionar bot√£o A para confirmar posi√ß√£o
 
-Pressionar bot„o B para reiniciar
+Pressionar bot√£o B para reiniciar
 
 Observar feedback no display, LEDs e buzzer
 
 Autor:
 Nome: Mateus Moreira da Silva
 
-RepositÛrio: GitHub
+Reposit√≥rio: GitHub: https://github.com/Mateus-MDS/Projeto_1---PixelHunter-.git
 
-VÌdeo de DemonstraÁ„o: YouTube
+V√≠deo de Demonstra√ß√£o: YouTube: https://youtu.be/bcOXOqESEd0
